@@ -1,0 +1,62 @@
+<meta charset="UTF-8">
+
+<h1>LISTA SEMANAL DE COMPRAS DE SUPERMERCADO</h1>
+
+<strong id="quantidadeStrong">Quantidade</strong>
+<input id="quantidade" />
+
+<strong id="unidadeStrong">Unidade</strong>
+<input id="unidade" />
+
+<strong id="itemStrong">Item</strong>
+<input id="item" />
+<button id="itemButton">Adicionar item</button>
+
+<div id="lista">
+
+</div>
+
+<script>
+
+function printQuantidade(){
+  var quantidade = document.querySelector("#quantidade");
+  return ("- " + quantidade.value);
+}
+
+quantidade.focus();
+
+function printUnidade(){
+  var unidade = document.querySelector("#unidade");
+  return (" " + unidade.value);
+  }
+
+var itens = [];
+
+function printItem(){
+    var item = document.querySelector("#item");
+    var itemIgual = false;
+    for(var posicao = 0; posicao < itens.length; posicao++){
+      if (itens[posicao] == item.value) {
+        itemIgual = true;
+        alert("Este item já existe! Por favor, adicione um item diferente.");
+      }
+    }
+
+    if(itemIgual == false){
+     document.getElementById("lista").innerHTML +=  printQuantidade() + printUnidade() + " " + item.value + "<br>";
+     itens.push(item.value);
+    }
+
+    quantidade.value = "";
+    unidade.value = "";
+    item.value = "";
+    quantidade.focus();
+
+}
+
+var adicionarItem = document.querySelector("#itemButton");
+adicionarItem.onclick = printItem;
+
+</script>
+
+
